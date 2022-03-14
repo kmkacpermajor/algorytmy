@@ -1,4 +1,5 @@
 import random
+import time
 
 dane = []
 def rosnace(y,tab):
@@ -38,25 +39,25 @@ def selection_sort(tab):
 
 
 def insertion_sort(tab):
-    for i in range(len(tab)-1):
-        key = tab[i+1]
+    for i in range(1, len(tab)):
+        key = tab[i]
         j = i
-        while j>=0 and key<tab[j]:
-            tab[j+1]=tab[j]
+        while j>=0 and key<tab[j-1]:
+            tab[j]=tab[j-1]
             j-=1
-        tab[j+1] = key
+        tab[j] = key
 
 def shell_sort(tab):
     h = len(tab) // 2
     while h > 0:
         for i in range(h, len(tab)):
-            key = tab[i+h]
+            key = tab[i]
             j = i
-            while j >= h and key<tab[j]:
-                tab[j+h] = tab[j]
+            while j >= h and key<tab[j - h]:
+                tab[j] = tab[j - h]
                 j -= h
  
-            tab[j+h] = key
+            tab[j] = key
         h = h // 2
 
 def podzial(tab,i, j):
@@ -74,8 +75,6 @@ def podzial(tab,i, j):
             break
 
     tab[start], tab[j] = tab[j], tab[start]
-
-    print(*tab)
 
     return j
 
@@ -144,6 +143,8 @@ while True:
         alg = int(alg)
         break
 
+pocz = time.time()
+
 if alg==1:
     selection_sort(dane)
 elif alg==2:
@@ -154,4 +155,9 @@ elif alg==4:
     heap_sort(dane)
 elif alg==5:
     quick_sort(dane, 0, len(dane)-1)
+
+kon = time.time()
+
 print(*dane)
+
+print("Kod wykonywał się {} s".format(kon-pocz))
