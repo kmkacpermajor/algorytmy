@@ -47,7 +47,17 @@ def insertion_sort(tab):
         tab[j+1] = key
 
 def shell_sort(tab):
-    pass
+    h = len(tab) // 2
+    while h > 0:
+        for i in range(h, len(tab)):
+            key = tab[i+h]
+            j = i
+            while j >= h and key<tab[j]:
+                tab[j+h] = tab[j]
+                j -= h
+ 
+            tab[j+h] = key
+        h = h // 2
 
 def podzial(tab,i, j):
     x = tab[i]
