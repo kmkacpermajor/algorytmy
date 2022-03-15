@@ -62,12 +62,12 @@ def shell_sort(tab):
 def podzial(tab,i, j, wybor):
 
     if wybor == "los":
-        ind_pivot = random.randint(i,j)
-    else:
-        ind_pivot = i
+        r = random.randint(i,j)
+        tab[r], tab[i] = tab[i], tab[r]
+
+    ind_pivot = i
 
     pivot = tab[ind_pivot] # wybieramy pivot
-
 
     while True:
         while i <= j and tab[i] <= pivot:       # szukamy indeks pierwszego większego elementu od lewej
@@ -148,6 +148,8 @@ while True:
     if alg.isnumeric():
         alg = int(alg)
         break
+
+dane = [8,10,6,8,0,1,0,2,6,0]
 
 pocz = time.time()
 
